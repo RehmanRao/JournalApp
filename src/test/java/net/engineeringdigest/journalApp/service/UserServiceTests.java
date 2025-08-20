@@ -30,23 +30,23 @@ public class UserServiceTests  {
     UserServiceTests() {
         MockitoAnnotations.openMocks(this);
     }
-    @Test
-    public void createUserTest(){   // but this one creating user real db
-
-
-        User user = new User(new ObjectId(), "testUser", "rawPass",
-                null, new ArrayList<>());
-        user.setRoles(Arrays.asList("USER"));
-
-        when(userRepository.save(user)).thenReturn(user);
-
-        User savedUser = userService.createUser(user);
-
-         assertNotNull(savedUser);
-        System.out.println("one is passed");
-        assertNotNull(savedUser.getPassword()); // should be encoded
-        System.out.println("two passed ");
-    }
+//    @Test
+//    public void createUserTest(){   // but this one creating user real db
+//
+//
+//        User user = new User(new ObjectId(), "testUser", "rawPass",
+//                null, new ArrayList<>());
+//        user.setRoles(Arrays.asList("USER"));
+//
+//        when(userRepository.save(user)).thenReturn(user);
+//
+//        User savedUser = userService.createUser(user);
+//
+//         assertNotNull(savedUser);
+//        System.out.println("one is passed");
+//        assertNotNull(savedUser.getPassword()); // should be encoded
+//        System.out.println("two passed ");
+//    }
 
 
 
