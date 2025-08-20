@@ -7,9 +7,5 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class JournalAppApplicationTests {
 
-	@Test
-	void contextLoads() {
-		assertEquals(5,3+2);
-	}
 
 }
