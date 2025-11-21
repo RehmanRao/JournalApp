@@ -19,7 +19,6 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
     public User getUserByUserName(String userName) {
         return userRepository.findByuserName(userName);
     }
@@ -29,7 +28,6 @@ public class UserService {
         user.setRoles(Arrays.asList("USER"));
         return userRepository.save(user);
     }
-
     public User updateUser(String username, User inputUser) {
         User existingUser = userRepository.findByuserName(username);
         if (existingUser == null) {
@@ -45,17 +43,15 @@ public class UserService {
         // Update other fields as needed
         existingUser.setRoles(Arrays.asList("USER"));
         existingUser.setJournalEntries(inputUser.getJournalEntries());
-
         return userRepository.save(existingUser);
     }
-
-
 
     public void deleteUserByUserName(String userName) {
 
          userRepository.deleteByUserName(userName);
 
-    }
+    }}
 
-
-}
+/*go to:
+View → Appearance → Navigation Bar
+*/

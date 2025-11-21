@@ -29,6 +29,11 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 //.formLogin();
                         .httpBasic();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
+        /*Spring Security filter chain intercepts
+
+Because you enabled .httpBasic(), Spring automatically registers the BasicAuthenticationFilter in the chain.
+
+This filter is the first “guard” that checks the Authorization header.*/
     }
 
     @Override

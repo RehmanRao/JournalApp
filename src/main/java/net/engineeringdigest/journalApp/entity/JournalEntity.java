@@ -4,13 +4,13 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document  // all files is equal one docuement
 @Data
  public class JournalEntity {
     @Id
     private String id;
     private String title;
-    private  String content;
+    private  String  content;
 
     public String getId() {
         return id;
