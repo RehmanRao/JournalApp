@@ -2,7 +2,7 @@ name: SonarQube
 on:
   push:
     branches:
-      - master
+      - '**'  # triggers on all branches
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
