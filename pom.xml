@@ -70,7 +70,5 @@
 
 </project>
 
-    <!--
-	.\mvnw clean install sonar:sonar "-Dsonar.token=squ_13d82cf10d1548d7aae626495a8fe1799b629144" "-Dsonar.host.url=http://localhost:9000"
-	-->
+
 
