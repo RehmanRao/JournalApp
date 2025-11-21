@@ -18,12 +18,12 @@ import java.util.List;
 public class User {
     @Id
     private ObjectId id;
-    @Indexed(unique = true)
+    @Indexed(unique = true)  // but we need to configure in application.properties
     @NonNull
     private String userName;
     @NonNull
     private String password;
-    @DBRef
+    @DBRef  // reference conection
     private ArrayList<JournalEntity> journalEntries = new ArrayList<>();
     private List<String> roles;
 

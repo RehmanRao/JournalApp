@@ -1,52 +1,66 @@
 package net.engineeringdigest.journalApp.service;
-
-
 import net.engineeringdigest.journalApp.entity.User;
 import net.engineeringdigest.journalApp.repository.UserRepository;
-import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class UserServiceTests  {
-
+@ExtendWith(MockitoExtension.class)
+class UserServiceTests  {
     @Mock
     private UserRepository userRepository;
 
     @InjectMocks
     private UserService userService;
 
-    UserServiceTests() {
-        MockitoAnnotations.openMocks(this);
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
+
+    private User user(String username, String rawPassword) {
+        User u = new User();
+        u.setUserName(username);
+        u.setPassword(rawPassword);
+        return u;
     }
-//    @Test
-//    public void createUserTest(){   // but this one creating user real db
-//
-//
-//        User user = new User(new ObjectId(), "testUser", "rawPass",
-//                null, new ArrayList<>());
-//        user.setRoles(Arrays.asList("USER"));
-//
-//        when(userRepository.save(user)).thenReturn(user);
-//
-//        User savedUser = userService.createUser(user);
-//
-//         assertNotNull(savedUser);
-//        System.out.println("one is passed");
-//        assertNotNull(savedUser.getPassword()); // should be encoded
-//        System.out.println("two passed ");
-//    }
+    @Test
+    void getAllUsers_returnsListFromRepository() {
+        List<User> stored = Arrays.asList(user("abdur", "x"), user("fatima", "y"));
+        when(userRepository.findAll()).thenReturn(stored);
+
+        // Act
+        List<User> result = userService.getAllUsers();
+
+        // Assert
+        assertEquals(2, result.size());
+        assertEquals("abdur", result.get(0).getUserName());
+        verify(userRepository, times(1)).findAll();
+    }
+
+
+    @Test
+    void getUserByUserName_returnsUser() {
+        // Arrange
+        User abdur = user("abdur", "secret");
+        when(userRepository.findByuserName("abdur")).thenReturn(abdur);
+
+        // Act
+        User result = userService.getUserByUserName("abdur");
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("abdur", result.getUserName());
+        verify(userRepository).findByuserName("abdur");
+    }
 
 
 

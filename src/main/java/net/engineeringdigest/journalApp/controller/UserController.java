@@ -28,7 +28,7 @@ public class UserController {
         System.out.println("put");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        System.out.println(userName);
+
         try {
             User updatedUser = userService.updateUser(userName,user);
             return ResponseEntity.ok(updatedUser);
