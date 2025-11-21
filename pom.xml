@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>1.8</java.version>
            <!--		sonar cloud-->
-		<sonar.organization>rehman-org</sonar.organization>
+		<sonar.organization>dummy-project-testing</sonar.organization>
 		<sonar.coverage.exclusions>**/*</sonar.coverage.exclusions>
 
 	</properties>
